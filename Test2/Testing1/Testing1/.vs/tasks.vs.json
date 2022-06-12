@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-Web",
+      "appliesTo": "Testing1/Areas/Admin/Views/Web.config",
+      "type": "launch"
+    }
+  ]
+}

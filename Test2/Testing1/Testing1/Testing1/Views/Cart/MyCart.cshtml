@@ -1,0 +1,99 @@
+﻿@using Testing1.Models;
+@{
+    ViewBag.Title = "Your Cart";
+}
+
+<p id="Catext" style="text-align: center;">Cart Page</p>
+<br>
+<br>
+
+<html>
+<body>
+
+    @if (Session["cart"] == null)
+    {
+        <p id="Catext">Your Cart is empty!</p>
+
+    }
+    else
+    {
+        <table class="table " id="TableItems" border="1">
+            <thead>
+                <tr style="color: green">
+                    <th>Option</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Sub Total</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                @foreach (CartItem item in (List<CartItem>)Session["cart"])
+                {
+                    <tr style="color: white">
+                        <td>
+                            <a href="@Url.Action("Remove", "Cart", new { id = item.Product.ProductID })">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                        <td>@item.Product.ProductID</td>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Product.Price</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.Product.Price * item.Quantity)</td>
+                    </tr>
+                }
+                <tr style="color:whitesmoke">
+                    <td align="right" colspan="5">Total: </td>
+                    <td>
+                        @{
+                            List<CartItem> cart = (List<CartItem>)Session["cart"];
+                            var total = cart.Sum(item => item.Product.Price * item.Quantity).ToString();
+                            ViewBag.CartTotal = total;
+                            TempData["Data1"] = ViewBag.CartTotal;
+                            ViewBag.user = User.Identity.Name;
+                            TempData["Data2"] = ViewBag.user;
+                        }
+                        @total
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <br />
+    }
+    <br>
+    <br>
+    <a href="@Url.Action("List", "Product")">
+        <button mdbRipple rippleColor="dark" type="button" class="btn btn-outline-success btn-rounded">
+            Continue Shopping
+        </button>
+    </a>
+
+    <fieldset>
+
+        @if (!Request.IsAuthenticated)
+        {
+            <p> </p>
+        }
+        else
+        {
+            @model Testing1.Models.Mail
+            using (Html.BeginForm("BillMail", "Cart", FormMethod.Post, new { id = "form", enctype = "multipart/form-data" }))
+            {
+                <br />
+                <button mdbRipple rippleColor="dark" input type="submit" onclick="return confirm('Confirm Order?');"
+                        class="btn btn-outline-success btn-rounded" in>
+                    Proceed to payment
+                </button>
+
+            }
+        }
+    </fieldset>
+
+</body>
+</html>

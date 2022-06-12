@@ -1,0 +1,54 @@
+﻿@model Testing1.Models.VProduct
+@{
+    ViewBag.Title = "AddItem";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="login-box">
+    <h2>Add Item</h2>
+    @using (Html.BeginForm("AddItem1", "Product", FormMethod.Post, new { id = "form", enctype = "multipart/form-data" }))
+    {
+        <div class="user-box">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-3 control-label" })
+            <br />
+            <br />
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="user-box">
+            @Html.LabelFor(m => m.Price, new { @class = "col-md-3 control-label" })
+            <br />
+            <br />
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="user-box">
+            @Html.LabelFor(m => m.Category, new { @class = "col-md-3 control-label" })
+            <br />
+            <br />
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Category, htmlAttributes: new { style = " height:30px;width:235px " })
+            </div>
+        </div>
+        <div class="user-box">
+            @Html.LabelFor(m => m.Image, new { @style = " height:20px; " })
+            <br />
+            <br />
+            @Html.TextBoxFor(model => model.Image, new { type = "file"@*, @class = "form-control" *@})
+
+        </div>
+
+      <br />
+       <button mdbRipple rippleColor="dark" value="submit" 
+              type="submit" class="btn btn-outline-success btn-rounded">
+          Add Item
+       </button>
+     }
+        
+</div>
+
+
+
+

@@ -1,0 +1,35 @@
+@model Testing1.Models.Product
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>Product <a id="Highlight">Details</a></h1>
+<br><br>
+ <img id="Category" src="@Url.Content("~/UploadedPhotos/"+@Model.imageURL)" alt="@Model.Name Image" class="img-responsive center-block"/>
+                 
+<br><br>
+    <div class="col-sm-6">
+        
+
+        <h3 id="Highlight">@Model.Name</h3>
+        <table class="table table-bordered table-striped" style="border: 1px solid green;">
+            <tr>
+                <td style="color: white;">Initial Price:</td>
+                <td style="color: white;">@Model.Price.ToString("C")</td>
+            </tr>
+            <tr>
+                <td style="color: white;">Discount:</td>
+                <td style="color: white;">@Model.DiscountPercent.ToString("P0")</td>
+            </tr>
+            <tr>
+                <td style="color: white;">Final Price:</td>
+                <td style="color: white;">@Model.DiscountPrice.ToString("C") </td>
+            </tr>
+        </table>
+        
+        <a style="text-decoration: none;color: green" 
+        href="@Url.Action("Buy", "Cart", new { id = @Model.ProductID })">
+        <button mdbRipple rippleColor="dark" type="button" 
+        class="btn btn-outline-success btn-rounded" style="size: 4ch;" >
+        Add to Cart</button></a>
+    </div>

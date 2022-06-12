@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection2-Web.config Connection String" description="DefaultConnection2 Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL8002.site4now.net;&#xD;&#xA;   Initial Catalog=db_a874ab_shop;&#xD;&#xA;   User Id=db_a874ab_shop_admin;&#xD;&#xA;   Password=Moha6719" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\user\\Desktop\\Test2\\Testing1\\Testing1\\Testing1\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection2']/@connectionString" />
+  </parameter>
+</parameters>
