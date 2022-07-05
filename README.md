@@ -1,4 +1,4 @@
-# Online-Store-Web-ASP.Net MVC(Model-Vieww-Controller)
+# Online-Store-Web-ASP.Net MVC Pattern(Model-View-Controller)
 //Online Technology store that have full online store functionality+Online Logins Facebook/linkedin/google
 //Admin area: additems, removeitems, updateitems, and serachfoitems
 //Social logins APIs: Google, Linkedin, Facebook
